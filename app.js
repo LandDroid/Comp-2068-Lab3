@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const http = require("http");
 const path = require('path');
 
 // Set our views directory
@@ -10,6 +10,11 @@ app.set('view engine', 'ejs');
 //Our routes
 const routes = require('./routes.js');
 app.use('/', routes);
+
+//adding static functionality for images
+app.use(express.static('public'));
+
+
 
 //Start our server
 app.listen(process.env.PORT || 3000, port => console.log(`Listening on port ${port}`));
